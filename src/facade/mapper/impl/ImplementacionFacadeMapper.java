@@ -1,12 +1,19 @@
 package facade.mapper.impl;
 
-import business.dto.DatosUsuario;
-import business.dto.LoginInt;
-import business.dto.ResponseOut;
-import facade.dto.DatosCuenta;
-import facade.dto.Login;
-import facade.dto.Response;
+import business.dto.methodOne.DatosUsuario;
+import business.dto.methodOne.LoginInt;
+import business.dto.methodOne.ResponseOut;
+import business.dto.methodTwo.BankInsertInt;
+import business.dto.methodTwo.BankResponseOut;
+import facade.dto.methodOne.DatosCuenta;
+import facade.dto.methodOne.Login;
+import facade.dto.methodOne.Response;
+import facade.dto.methodTwo.Bank;
+import facade.dto.methodTwo.BankResponse;
 import facade.mapper.InterfaceFacadeMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ImplementacionFacadeMapper implements InterfaceFacadeMapper {
 
@@ -40,4 +47,32 @@ public class ImplementacionFacadeMapper implements InterfaceFacadeMapper {
 
         return response;
     }
+
+    @Override
+    public BankInsertInt MapeoEntradaBank(String bank) {
+        BankInsertInt bankInsertInt = new BankInsertInt();
+        bankInsertInt.setBanco(bank);
+        return bankInsertInt;
+    }
+
+    @Override
+    public BankResponse MapeoSalidaBank(BankResponseOut bankResponseOut) {
+        BankResponse bankResponse = new BankResponse();
+
+        List<Bank> bankListFacade = new ArrayList<>();
+        for (int i = 0; i < bankResponseOut.getBank().size(); i++) {
+            Bank bank = new Bank();
+            bank.setActivo(bankResponseOut.getBank().get(i).getActive());
+            bank.setNit(bankResponseOut.getBank().get(i).getNit());
+            bank.setNombre(bankResponseOut.getBank().get(i).getName());
+            bankListFacade.add(bank);
+            bankResponse.setBanco(bankListFacade);
+        }
+
+        return bankResponse;
+    }
+
+
+
+
 }

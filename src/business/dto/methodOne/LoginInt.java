@@ -1,4 +1,4 @@
-package business.dto;
+package business.dto.methodOne;
 
 public class LoginInt {
 

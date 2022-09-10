@@ -1,6 +1,6 @@
-package business.dto;
+package business.dto.methodOne;
 
-import facade.dto.DatosCuenta;
+import facade.dto.methodOne.DatosCuenta;
 
 public class ResponseOut {
 

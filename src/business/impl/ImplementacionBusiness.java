@@ -1,8 +1,10 @@
 package business.impl;
 
 import business.InterfaceBusiness;
-import business.dto.LoginInt;
-import business.dto.ResponseOut;
+import business.dto.methodOne.LoginInt;
+import business.dto.methodOne.ResponseOut;
+import business.dto.methodTwo.BankInsertInt;
+import business.dto.methodTwo.BankResponseOut;
 import dao.impl.ImplementacionDAO;
 
 public class ImplementacionBusiness implements InterfaceBusiness {
@@ -14,4 +16,12 @@ public class ImplementacionBusiness implements InterfaceBusiness {
         ResponseOut responseOut = implementacionDAO.generateResponseOut(loginInt);
         return responseOut;
     }
+
+    @Override
+    public BankResponseOut generateResponseBankOut(BankInsertInt bankInsertInt) {
+        BankResponseOut bankResponseOut = implementacionDAO.generateResponseBankOut(bankInsertInt);
+        return bankResponseOut;
+    }
+
+
 }

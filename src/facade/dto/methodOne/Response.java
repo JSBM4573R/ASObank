@@ -1,4 +1,4 @@
-package facade.dto;
+package facade.dto.methodOne;
 
 public class Response {
 
